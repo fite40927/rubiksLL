@@ -26,6 +26,14 @@ public class LLSolver {
 	}
 	public static boolean firstLayer() {
 		boolean complete = false;
+		
+		//{Coordinate: side+blockie, End coordinate: side+blockie, rotation sequence}
+		String[][] whiteEdges = {{"11", "07", "5"},{"13", "03", "1 2'"},{"15", "03", "2'"},{"17", "03", "1' 2'"},
+								 {"21", "01", "1"},{"23", "01", "2' 1"},{"25", "05", "3'"},{"27", "05", "2' 3'"},
+								 {"31", "2"},{"33", ""},{"35", ""},{"37", ""},
+								 {"41", "1 1"},{"43", ""},{"45", ""},{"47", "2 2"},
+								 {"51", ""},{"53", ""},{"55", ""},{"57", ""}};
+		
 		//find white edges
 		for(int i = 1; i < 6; i++) {
 			for(int j = 0; j < 9; j++) {
