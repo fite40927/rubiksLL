@@ -9,7 +9,6 @@ public class LLSolver {
 	}
 	public Cube solve() {	
 	//1st layer
-		System.out.println("Solving first layer...");
 		firstLayer();
 		cube.printCube();
 		
@@ -17,15 +16,17 @@ public class LLSolver {
 		
 		
 	//2nd layer
-		System.out.println("Solving second layer...");
+		secondLayer();
 		
 	//3rd layer
-		System.out.println("Solving third layer...");
+		thirdLayer();
 		
 		
 		return cube;
 	}
 	public static boolean firstLayer() {
+		System.out.println("Solving first layer...");
+		
 		boolean complete = false;
 		String[] rotations = null;
 		String[] idx = null;
@@ -39,15 +40,14 @@ public class LLSolver {
 		
 		//find white edges
 		for(int i = 1; i < 6; i++) {
-			System.out.println("\nfirstLayer for1:\t" + i);
 			for(int j = 1; j < 9; j+=2) {
-				System.out.println("firstLayer for2:\t" + j);
 				if(cube.getValue(i, j) == 0) {
-					System.out.println("WHITE EDGE FOUND");
+					System.out.println("\nWHITE EDGE FOUND");
 					idx = whiteEdges[i-1][(j-1)/2];
 					rotations = idx[2].split(" ");
 					System.out.print("Rotations to complete:\t");
 					for(int k = 0; k < rotations.length; k++) System.out.print(rotations[k] + "\t");
+					System.out.println();
 					
 					char c = idx[1].charAt(1);
 					int cInt = Character.getNumericValue(c);
@@ -66,10 +66,13 @@ public class LLSolver {
 		return complete;
 	}
 	public static boolean secondLayer() {
+		System.out.println("Solving second layer...");
+		
 		boolean complete = false;
 		return complete;
 	}
 	public static boolean thirdLayer() {
+		System.out.println("Solving third layer...");
 		boolean complete = false;
 		return complete;
 	}
