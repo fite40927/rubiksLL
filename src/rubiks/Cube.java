@@ -129,6 +129,13 @@ public class Cube {
 	}
 	
 	//cube movements
+	public void rotate(String rotation) {
+		char a = rotation.charAt(0);
+		int aInt = Character.getNumericValue(a);
+		if(rotation.length() > 1) 
+			counterclockwise(aInt);
+		else clockwise(aInt);
+	}
 	public void clockwise(int side) {
 		System.out.println("Rotate " + faceColours[side] + " face clockwise");
 		
@@ -406,6 +413,6 @@ public class Cube {
 			default: {
 				System.out.println("Error rotating " + getColorValue(side) + " counterclockwise");
 			}
-		} 
+		}
 	}
 }
