@@ -1,12 +1,22 @@
 package rubiks;
 import java.util.*;
 
+/*
+G O O B Y O B W W
+R G G B O R W G B
+G Y W W Y G B R R
+O W G W R Y Y Y G
+B O Y Y W O O R Y
+R R W B R G B B O
+ */
+
 public class LLSolver {
 	static Cube cube;
 	static int turnCount;
 	public LLSolver(Cube c) {
 		cube = c;
 		turnCount = 0;
+		cube.printCube();
 	}
 	public Cube solve() {	
 	//1st layer
@@ -35,13 +45,34 @@ public class LLSolver {
 		String placement = "";
 		String expectedPlacement = "1235123";
 		for(int i = 1; i < 9; i+=2) {
-			placement.concat("" + cube.getAdjacentCubie(0, i)[1]);
+			int adjCubie[] = cube.getAdjacentCubie(0, i);
+			System.out.println(adjCubie[0] + "\t" + adjCubie[1]);
+			placement = placement.concat("" + cube.getValue(adjCubie[0], adjCubie[1]));
 		}
-		
+	
 		if(expectedPlacement.contains(placement)) {
-			System.out.println("Correctly placed");
+			System.out.println("\nCorrectly placed\n");
 		}
 		else {
+			System.out.println("\nIncorrectly placed\n");
+			for(int i = 0; i < expectedPlacement.length(); i++) {
+				if(expectedPlacement.charAt(i) == placement.charAt(0)) {
+					expectedPlacement = expectedPlacement.substring(i, i+4);
+					i = expectedPlacement.length();
+				}
+			}
+			System.out.println(placement);
+			System.out.println(expectedPlacement);
+			int[] p = {1, 3, 5, 7};
+			for(int i = 0; i < 4; i++) {
+				if(placement.charAt(i) != expectedPlacement.charAt(i)) {
+					for(int j = i+1; j < 4; j++) {
+						if(placement.charAt(j) == expectedPlacement.charAt(i)) {
+							
+						}
+					}
+				}
+			}
 			
 		}
 		

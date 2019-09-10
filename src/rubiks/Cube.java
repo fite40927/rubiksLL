@@ -36,6 +36,30 @@ public class Cube {
 		}
 		System.out.println("Cube created");
 	}
+	public Cube(String[] cubeInput) {
+		String[][] cubeString = new String[6][9];
+		for(int i = 0; i < 6; i++)
+			cubeString[i] = cubeInput[i].split(" ");
+		for(int i = 0; i < 6; i++) {
+			for(int j = 0; j < 9; j++) {
+				if(cubeString[i][j].equalsIgnoreCase("W"))
+					cube[i][j] = 0;
+				else if(cubeString[i][j].equalsIgnoreCase("B"))
+					cube[i][j] = 1;
+				else if(cubeString[i][j].equalsIgnoreCase("R"))
+					cube[i][j] = 2;
+				else if(cubeString[i][j].equalsIgnoreCase("G"))
+					cube[i][j] = 3;
+				else if(cubeString[i][j].equalsIgnoreCase("Y"))
+					cube[i][j] = 4;
+				else if(cubeString[i][j].equalsIgnoreCase("O"))
+					cube[i][j] = 5;
+				else cube[i][j] = Integer.parseInt(cubeString[i][j]);
+			}
+		}
+		
+		System.out.println("Cube created");
+	}
 	
 	public void printCube(){
 		System.out.println("\nCube status:");
@@ -85,51 +109,51 @@ public class Cube {
 		switch(a) {
 			case 0: {
 				switch(b) {
-					case 1: pair[0] = 1; pair[0] = 7; break;
-					case 3: pair[0] = 2; pair[0] = 7; break;
-					case 5: pair[0] = 3; pair[0] = 7; break;
-					case 7: pair[0] = 5; pair[0] = 3; break;
+					case 1: pair[0] = 1; pair[1] = 7; break;
+					case 3: pair[0] = 2; pair[1] = 7; break;
+					case 5: pair[0] = 3; pair[1] = 7; break;
+					case 7: pair[0] = 5; pair[1] = 3; break;
 				}
 				break;
 			}
 			case 1: {
 				switch(b) {
-					case 1: pair[0] = 5; pair[0] = 1; break;
-					case 3: pair[0] = 4; pair[0] = 1; break;
-					case 5: pair[0] = 2; pair[0] = 1; break;
-					case 7: pair[0] = 0; pair[0] = 1; break;
+					case 1: pair[0] = 5; pair[1] = 1; break;
+					case 3: pair[0] = 4; pair[1] = 1; break;
+					case 5: pair[0] = 2; pair[1] = 1; break;
+					case 7: pair[0] = 0; pair[1] = 1; break;
 				}
 			}
 			case 2: {
 				switch(b) {
-					case 1: pair[0] = 1; pair[0] = 5; break;
-					case 3: pair[0] = 4; pair[0] = 7; break;
-					case 5: pair[0] = 3; pair[0] = 1; break;
-					case 7: pair[0] = 0; pair[0] = 3; break;
+					case 1: pair[0] = 1; pair[1] = 5; break;
+					case 3: pair[0] = 4; pair[1] = 7; break;
+					case 5: pair[0] = 3; pair[1] = 1; break;
+					case 7: pair[0] = 0; pair[1] = 3; break;
 				}
 			}
 			case 3: {
 				switch(b) {
-					case 1: pair[0] = 2; pair[0] = 5; break;
-					case 3: pair[0] = 4; pair[0] = 5; break;
-					case 5: pair[0] = 5; pair[0] = 5; break;
-					case 7: pair[0] = 0; pair[0] = 5; break;
+					case 1: pair[0] = 2; pair[1] = 5; break;
+					case 3: pair[0] = 4; pair[1] = 5; break;
+					case 5: pair[0] = 5; pair[1] = 5; break;
+					case 7: pair[0] = 0; pair[1] = 5; break;
 				}
 			}
 			case 4: {
 				switch(b) {
-					case 1: pair[0] = 1; pair[0] = 5; break;
-					case 3: pair[0] = 5; pair[0] = 7; break;
-					case 5: pair[0] = 3; pair[0] = 3; break;
-					case 7: pair[0] = 2; pair[0] = 3; break;
+					case 1: pair[0] = 1; pair[1] = 5; break;
+					case 3: pair[0] = 5; pair[1] = 7; break;
+					case 5: pair[0] = 3; pair[1] = 3; break;
+					case 7: pair[0] = 2; pair[1] = 3; break;
 				}
 			}
 			case 5: {
 				switch(b) {
-					case 1: pair[0] = 1; pair[0] = 3; break;
-					case 3: pair[0] = 0; pair[0] = 7; break;
-					case 5: pair[0] = 3; pair[0] = 5; break;
-					case 7: pair[0] = 4; pair[0] = 3; break;
+					case 1: pair[0] = 1; pair[1] = 3; break;
+					case 3: pair[0] = 0; pair[1] = 7; break;
+					case 5: pair[0] = 3; pair[1] = 5; break;
+					case 7: pair[0] = 4; pair[1] = 3; break;
 				}
 			}
 			default: System.out.println("Error: corner inputted");
