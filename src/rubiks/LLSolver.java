@@ -1,4 +1,5 @@
 package rubiks;
+import java.util.*;
 
 public class LLSolver {
 	static Cube cube;
@@ -9,25 +10,44 @@ public class LLSolver {
 	}
 	public Cube solve() {	
 	//1st layer
+		System.out.println("Solving first layer...");
 		firstLayer();
 		cube.printCube();
 		
-		//
-		
-		
 	//2nd layer
+		System.out.println("Solving second layer...");
 		secondLayer();
 		
 	//3rd layer
+		System.out.println("Solving third layer...");
 		thirdLayer();
 		
 		
 		return cube;
 	}
 	public static boolean firstLayer() {
-		System.out.println("Solving first layer...");
-		
 		boolean complete = false;
+		
+		//place edges
+		findWhiteEdges();
+		
+		//check permutation
+		String placement = "";
+		String expectedPlacement = "1235123";
+		for(int i = 1; i < 9; i+=2) {
+			placement.concat("" + cube.getAdjacentCubie(0, i)[1]);
+		}
+		
+		if(expectedPlacement.contains(placement)) {
+			System.out.println("Correctly placed");
+		}
+		else {
+			
+		}
+		
+		return complete;
+	}
+	public static boolean findWhiteEdges() {
 		String[] rotations = null;
 		String[] idx = null;
 		
@@ -45,34 +65,27 @@ public class LLSolver {
 					System.out.println("\nWHITE EDGE FOUND");
 					idx = whiteEdges[i-1][(j-1)/2];
 					rotations = idx[2].split(" ");
-					System.out.print("Rotations to complete:\t");
-					for(int k = 0; k < rotations.length; k++) System.out.print(rotations[k] + "\t");
-					System.out.println();
 					
-					char c = idx[1].charAt(1);
-					int cInt = Character.getNumericValue(c);
-					while(cube.getValue(0, cInt) == 0) {
+					while(cube.getValue(0, Basics.toInt(idx[1].charAt(1))) == 0) {
 						cube.clockwise(0);
 					}
 					for(int m = 0; m < rotations.length; m++) {
 						
 						cube.rotate(rotations[m]);
 					}
-					firstLayer();
+					findWhiteEdges();
 				}
 				
 			}
 		}
-		return complete;
+		return true;
 	}
-	public static boolean secondLayer() {
-		System.out.println("Solving second layer...");
-		
+	
+	public static boolean secondLayer() {		
 		boolean complete = false;
 		return complete;
 	}
 	public static boolean thirdLayer() {
-		System.out.println("Solving third layer...");
 		boolean complete = false;
 		return complete;
 	}

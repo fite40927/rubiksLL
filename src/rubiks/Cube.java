@@ -79,62 +79,69 @@ public class Cube {
 	public int getValue(int a, int b) {
 		return cube[a][b];
 	}
-	public int getAdjacentSide(int a, int b) {
+	public int[] getAdjacentCubie(int a, int b) {
 		//for edges only
-		int side = a;
-		switch(b) {
+		int pair[] = new int[2];
+		switch(a) {
+			case 0: {
+				switch(b) {
+					case 1: pair[0] = 1; pair[0] = 7; break;
+					case 3: pair[0] = 2; pair[0] = 7; break;
+					case 5: pair[0] = 3; pair[0] = 7; break;
+					case 7: pair[0] = 5; pair[0] = 3; break;
+				}
+				break;
+			}
 			case 1: {
-				switch(a) {
-					case 0: return 1;
-					case 1: return 5;
-					case 2: return 1;
-					case 3: return 2;
-					case 4: return 1;
-					case 5: return 1;
+				switch(b) {
+					case 1: pair[0] = 5; pair[0] = 1; break;
+					case 3: pair[0] = 4; pair[0] = 1; break;
+					case 5: pair[0] = 2; pair[0] = 1; break;
+					case 7: pair[0] = 0; pair[0] = 1; break;
+				}
+			}
+			case 2: {
+				switch(b) {
+					case 1: pair[0] = 1; pair[0] = 5; break;
+					case 3: pair[0] = 4; pair[0] = 7; break;
+					case 5: pair[0] = 3; pair[0] = 1; break;
+					case 7: pair[0] = 0; pair[0] = 3; break;
 				}
 			}
 			case 3: {
-				switch(a) {
-				case 0:
-				case 1:
-				case 2:
-				case 3:
-				case 4:
-				case 5:
+				switch(b) {
+					case 1: pair[0] = 2; pair[0] = 5; break;
+					case 3: pair[0] = 4; pair[0] = 5; break;
+					case 5: pair[0] = 5; pair[0] = 5; break;
+					case 7: pair[0] = 0; pair[0] = 5; break;
+				}
 			}
-		}
+			case 4: {
+				switch(b) {
+					case 1: pair[0] = 1; pair[0] = 5; break;
+					case 3: pair[0] = 5; pair[0] = 7; break;
+					case 5: pair[0] = 3; pair[0] = 3; break;
+					case 7: pair[0] = 2; pair[0] = 3; break;
+				}
+			}
 			case 5: {
-				switch(a) {
-				case 0:
-				case 1:
-				case 2:
-				case 3:
-				case 4:
-				case 5:
+				switch(b) {
+					case 1: pair[0] = 1; pair[0] = 3; break;
+					case 3: pair[0] = 0; pair[0] = 7; break;
+					case 5: pair[0] = 3; pair[0] = 5; break;
+					case 7: pair[0] = 4; pair[0] = 3; break;
+				}
 			}
-		}
-			case 7: {
-				switch(a) {
-				case 0:
-				case 1:
-				case 2:
-				case 3:
-				case 4:
-				case 5:
-			}
-		}
 			default: System.out.println("Error: corner inputted");
 		}
-		return side;
+		return pair;
 	}
 	
 	//cube movements
 	public void rotate(String rotation) {
-		char a = rotation.charAt(0);
-		int aInt = Character.getNumericValue(a);
 		if(rotation.length() > 1) 
-			counterclockwise(aInt);
-		else clockwise(aInt);
+			counterclockwise(Basics.toInt(rotation.charAt(0)));
+		else clockwise(Basics.toInt(rotation.charAt(0)));
 	}
 	public void clockwise(int side) {
 		System.out.println("Rotate " + faceColours[side] + " face clockwise");
