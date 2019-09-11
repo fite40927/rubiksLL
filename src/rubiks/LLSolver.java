@@ -86,6 +86,7 @@ public class LLSolver {
 		String[] rotations = null;
 		String[] idx = null;
 		
+		//Sequence table for specific white edge positions
 		//{Current coordinate: side+blockie, End coordinate: side+blockie, rotation sequence}
 		String[][][] whiteEdges = {{{"11", "07", "5"},{"13", "03", "1 2'"},{"15", "03", "2'"},{"17", "03", "1' 2'"}},
 								   {{"21", "01", "1"},{"23", "01", "2' 1"},{"25", "05", "3'"},{"27", "05", "2' 3'"}},
@@ -93,7 +94,7 @@ public class LLSolver {
 							  	   {{"41", "01", "1 1"},{"43", "07", "5 5"},{"45", "05", "3 3"},{"47", "03", "2 2"}},
 								   {{"51", "01", "1'"},{"53", "01", "5' 1'"},{"55", "07", "3"},{"57", "01", "5 1'"}}};
 		
-		//find white edges
+		//find white edges and rotate acording to sequence table
 		for(int i = 1; i < 6; i++) {
 			for(int j = 1; j < 9; j+=2) {
 				if(cube.getValue(i, j) == 0) {
@@ -116,12 +117,14 @@ public class LLSolver {
 		return true;
 	}
 	
-	public static boolean secondLayer() {		
+	public static boolean secondLayer() {
 		boolean complete = false;
+		System.out.println("secondLayer() NOT YET IMPLEMENTED");
 		return complete;
 	}
 	public static boolean thirdLayer() {
 		boolean complete = false;
+		System.out.println("thirdLayer() NOT YET IMPLEMENTED");
 		return complete;
 	}
 }
