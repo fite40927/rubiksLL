@@ -55,6 +55,8 @@ public class LLSolver {
 		}
 		else {
 			System.out.println("\nIncorrectly placed\n");
+			
+			//aligns 0,1 with expected permutation
 			for(int i = 0; i < expectedPlacement.length(); i++) {
 				if(expectedPlacement.charAt(i) == placement.charAt(0)) {
 					expectedPlacement = expectedPlacement.substring(i, i+4);
@@ -63,12 +65,14 @@ public class LLSolver {
 			}
 			System.out.println(placement);
 			System.out.println(expectedPlacement);
+			
+			//switches cubies into expected placement using L2, R2 and D
 			int[] p = {1, 3, 5, 7};
 			for(int i = 0; i < 4; i++) {
 				if(placement.charAt(i) != expectedPlacement.charAt(i)) {
 					for(int j = i+1; j < 4; j++) {
 						if(placement.charAt(j) == expectedPlacement.charAt(i)) {
-							
+							cube.clockwise(p[i]); cube.clockwise(p[i]);
 						}
 					}
 				}
